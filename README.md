@@ -1,6 +1,6 @@
-# LoopLingo
+# Loop Lingo
 
-TODO: Write a gem description
+Connect to the Loop Lingo Merchant API
 
 ## Installation
 
