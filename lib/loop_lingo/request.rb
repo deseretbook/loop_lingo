@@ -3,18 +3,13 @@ class LoopLingo
 
   protected
 
-    def self.error_response?(response)
-      if !is_success?(response)
-      elsif !is_json_error?(response)
-      else
-        false
-      end
+    def http_error?(response)
+      !response.kind_of? Net::HTTPSuccess
     end
 
-  private
-
-    def is_success?(response)
-      response.kind_of? Net::HTTPSuccess
+    def json_error?(response_body)
+      false
     end
+
   end
 end

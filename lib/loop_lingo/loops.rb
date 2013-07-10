@@ -1,4 +1,4 @@
-class LoopLingo::Response::Loops < LoopLingo::Response
+class LoopLingo::Loops < LoopLingo::Response
   attr_reader :loops
   def initialize(response_body)
     response = MultiJson.load(response_body)

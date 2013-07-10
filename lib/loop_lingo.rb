@@ -8,9 +8,10 @@ require "loop_lingo/uris"
 require "loop_lingo/request"
 require "loop_lingo/request/post"
 require "loop_lingo/request/get"
-require "loop_lingo/request/loops"
+
 require "loop_lingo/response"
-require "loop_lingo/response/loops"
+require "loop_lingo/loop"
+require "loop_lingo/loops"
 
 class LoopLingo
   def self.config(options = {})
@@ -34,6 +35,9 @@ class LoopLingo
 
   # get the loops for this account.
   def self.loops
-    LoopLingo::Request::Loops.get(
+    LoopLingo::Request::Get.new(
+      LoopLingo::Uris.get_loops_uri,
+      LoopLingo::Loops
+    ).response
   end
 end

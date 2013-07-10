@@ -5,7 +5,7 @@ class LoopLingo
     DOMAIN = "looplingo.com"
     BASE_PATH = "api"
 
-    def self.loops_uri
+    def self.get_loops_uri
       "#{base_uri}/loops/?#{credentials_for_get}"
     end
 
