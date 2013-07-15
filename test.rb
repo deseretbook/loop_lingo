@@ -6,6 +6,5 @@ LoopLingo.config do |l|
   l.pwd   "book book 123"
 end
 
-puts LoopLingo::Uris.loops_uri
 loops = LoopLingo.loops
 puts loops.to_s

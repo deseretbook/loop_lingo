@@ -9,7 +9,7 @@ class LoopLingo::Request::Get < LoopLingo::Request
     ).response
 
 
-    response = if http_error?(r)
+    @response = if http_error?(r)
       LoopLingo::HttpError.new(r)
     elsif json_error?(r.body)
       LoopLingo::Error.new(r.body)

@@ -3,10 +3,13 @@ class LoopLingo::Loops < LoopLingo::Response
   def initialize(response_body)
     response = MultiJson.load(response_body)
 
-    loops = []
+    @loops = []
     response.each do |loop_data|
-      loops << LoopLingo::Loop.new(loop_data)
+      @loops << LoopLingo::Loop.new(loop_data)
     end
+  end
 
+  def to_s
+    @loops.map(&:to_s).join("\n")
   end
 end
