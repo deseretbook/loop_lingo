@@ -1,4 +1,4 @@
-class LoopLingo::Loop < LoopLingo::Response
+class LoopLingo::Loop
   attr_reader :attributes
   def initialize(loop_attributes)
     @attributes = loop_attributes

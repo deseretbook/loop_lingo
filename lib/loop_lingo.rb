@@ -10,6 +10,9 @@ require "loop_lingo/request/post"
 require "loop_lingo/request/get"
 
 require "loop_lingo/response"
+require "loop_lingo/error"
+require "loop_lingo/http_error"
+
 require "loop_lingo/loop"
 require "loop_lingo/loops"
 

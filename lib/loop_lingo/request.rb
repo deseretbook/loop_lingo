@@ -8,7 +8,14 @@ class LoopLingo
     end
 
     def json_error?(response_body)
-      false
+      begin
+        res = MultiJson.load(response_body)
+      rescue Exception => e
+        puts e.message
+        return false
+      end
+
+      res.class == Hash && res["error"].to_s.size > 0
     end
 
   end
