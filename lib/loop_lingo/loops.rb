@@ -16,6 +16,10 @@ class LoopLingo::Loops < LoopLingo::Response
     end
   end
 
+  def size
+    @loops.size
+  end
+
   def last
     @loops.last
   end

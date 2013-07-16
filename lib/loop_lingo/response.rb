@@ -14,6 +14,10 @@ class LoopLingo
       !errors.empty?
     end
 
+    def success?
+      !errror?
+    end
+
   private
 
     def set_errors_default

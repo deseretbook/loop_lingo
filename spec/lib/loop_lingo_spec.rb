@@ -56,4 +56,21 @@ describe LoopLingo do
       LoopLingo.loops.must == mock_get_response
     end
   end
+
+  describe ".loops" do
+    before(:each) do
+      LoopLingo.stub(:login).and_return('LOGIN')
+      LoopLingo.stub(:pwd).and_return('PWD')
+    end
+
+    it "must issue a get request to the loops url and query the response" do
+      mock_get_response = double(:get_response)
+      LoopLingo::Request::Get.stub(:new).with(
+        LoopLingo::Uris.get_loops_uri,
+        LoopLingo::Loops
+      ).and_return(double(:get_request, :response => mock_get_response))
+
+      LoopLingo.loops.must == mock_get_response
+    end
+  end
 end
