@@ -73,4 +73,39 @@ describe LoopLingo do
       LoopLingo.loops.must == mock_get_response
     end
   end
+
+  describe ".complete_loop" do
+    before(:each) do
+      LoopLingo.stub(:login).and_return('LOGIN')
+      LoopLingo.stub(:pwd).and_return('PWD')
+    end
+
+    it "must issue a post to complete a loop" do
+      mock_get_response = double(:get_response)
+      LoopLingo::Request::Post.stub(:new).with(
+        LoopLingo::Uris.get_complete_loop_uri("L123"),
+        LoopLingo::Boolean,
+        { :total => 1.00, :price => 1.00 }
+      ).and_return(double(:get_request, :response => mock_get_response))
+
+      LoopLingo.complete_loop("L123").must == mock_get_response
+    end
+  end
+
+  describe ".cancel_loop" do
+    before(:each) do
+      LoopLingo.stub(:login).and_return('LOGIN')
+      LoopLingo.stub(:pwd).and_return('PWD')
+    end
+
+    it "must issue a post to cancel a loop" do
+      mock_get_response = double(:get_response)
+      LoopLingo::Request::Post.stub(:new).with(
+        LoopLingo::Uris.get_cancel_loop_uri("L123"),
+        LoopLingo::Boolean
+      ).and_return(double(:get_request, :response => mock_get_response))
+
+      LoopLingo.cancel_loop("L123").must == mock_get_response
+    end
+  end
 end

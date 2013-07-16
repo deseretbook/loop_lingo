@@ -10,8 +10,12 @@ end
 # puts "Loops: #{loops.size}"
 # puts loops.to_s
 
-resp = LoopLingo.cancel_loop("L23528")
+# resp = LoopLingo.cancel_loop("L23528")
+# puts resp.to_s
+
+resp = LoopLingo.complete_loop("L23539")
 puts resp.to_s
+
 
 # Loop (id): L23528
 # created: 2013-07-15T21:26:54+00:00

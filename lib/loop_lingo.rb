@@ -47,8 +47,9 @@ class LoopLingo
 
   def self.complete_loop(loop_id)
     LoopLingo::Request::Post.new(
-      LoopLingo::Uris.get_complete_loop_uri(loop_id, :total => 1, :price => 2),
-      LoopLingo::Boolean
+      LoopLingo::Uris.get_complete_loop_uri(loop_id),
+      LoopLingo::Boolean,
+      { :total => 1.00, :price => 1.00 }
     ).response
   end
 
