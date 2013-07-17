@@ -21,4 +21,17 @@ class LoopLingo::Loop
       super
     end
   end
+
+  def complete!(options = {})
+    LoopLingo.complete_loop(
+      @attributes['id'], {
+        :price => @attributes['price'],
+        :total => @attributes['total'],
+      }.merge(options)
+    )
+  end
+
+  def cancel!
+    LoopLingo.cancel_loop(@attributes['id'])
+  end
 end

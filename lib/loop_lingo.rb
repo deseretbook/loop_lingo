@@ -45,11 +45,14 @@ class LoopLingo
     ).response
   end
 
-  def self.complete_loop(loop_id)
+  def self.complete_loop(loop_id, options = {})
+    options[:total] = 0.0 unless options[:total]
+    options[:price] = 0.0 unless options[:price]
+
     LoopLingo::Request::Post.new(
       LoopLingo::Uris.get_complete_loop_uri(loop_id),
       LoopLingo::Boolean,
-      { :total => 1.00, :price => 1.00 }.merge(LoopLingo.form_post_credentials)
+      options.merge(LoopLingo.form_post_credentials)
     ).response
   end
 
@@ -61,7 +64,7 @@ class LoopLingo
     ).response
   end
 
-  private
+private
 
   def self.form_post_credentials
     {

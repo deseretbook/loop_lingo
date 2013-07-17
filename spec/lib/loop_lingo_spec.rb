@@ -85,7 +85,7 @@ describe LoopLingo do
       LoopLingo::Request::Post.stub(:new).with(
         LoopLingo::Uris.get_complete_loop_uri("L123"),
         LoopLingo::Boolean,
-        { :total => 1.00, :price => 1.00, :login => 'LOGIN', :pwd => 'PWD' }
+        { :total => 0.0, :price => 0.0, :login => 'LOGIN', :pwd => 'PWD' }
       ).and_return(double(:get_request, :response => mock_get_response))
 
       LoopLingo.complete_loop("L123").must == mock_get_response

@@ -28,6 +28,10 @@ describe LoopLingo::Loop do
 
   let(:valid_loop) { klass.new(valid_attributes) }
 
+  let(:mock_boolean_response) do
+    double(:boolean_response)
+  end
+
   describe "#initialize" do
     it "must populate @attributes with the passed data" do
       h = { "a" => :b }
@@ -43,6 +47,43 @@ describe LoopLingo::Loop do
 
     it "must call super if there no matching attributes value" do
       lambda { valid_loop.invalid }.must raise_exception
+    end
+  end
+
+  describe "complete!" do
+    it "must call LoopLingo.complete() with the appropriate arguments" do
+      LoopLingo.should_receive(:complete_loop).with(
+        valid_attributes['id'], {
+          :price => valid_attributes['price'],
+          :total => valid_attributes['total'],
+        }
+      ).and_return(mock_boolean_response)
+
+      valid_loop.complete!.must == mock_boolean_response
+    end
+
+    it "must allow arguments to be specified" do
+      LoopLingo.should_receive(:complete_loop).with(
+        valid_attributes['id'], {
+          :price => 99.0,
+          :total => 101.0,
+          :foo => 'bar'
+        }
+      ).and_return(mock_boolean_response)
+
+      valid_loop.complete!(
+        {:price => 99.0, :total => 101.0, :foo => 'bar'}
+      ).must == mock_boolean_response
+    end
+  end
+
+  describe "cancel!" do
+    it "must call LoopLingo.cancel() with the appropriate arguments" do
+      LoopLingo.should_receive(:cancel_loop).with(
+        valid_attributes['id']
+      ).and_return(mock_boolean_response)
+
+      valid_loop.cancel!.must == mock_boolean_response
     end
   end
 end
