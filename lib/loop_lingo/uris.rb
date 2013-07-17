@@ -17,6 +17,14 @@ class LoopLingo
       "#{base_uri}/loop/cancel/#{loop_id}/"
     end
 
+    def self.get_user_uri(user_id)
+      "#{base_uri}/user/#{user_id}/?#{LoopLingo.url_credentials}"
+    end
+
+    def self.redeem_user_points_uri(user_id)
+      "#{base_uri}/user/redeem/#{user_id}/"
+    end
+
   private
 
     def self.base_uri

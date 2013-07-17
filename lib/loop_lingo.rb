@@ -15,6 +15,7 @@ require "loop_lingo/http_error"
 
 require "loop_lingo/loop"
 require "loop_lingo/loops"
+require "loop_lingo/user"
 require "loop_lingo/boolean"
 
 class LoopLingo
@@ -63,6 +64,22 @@ class LoopLingo
       LoopLingo.form_post_credentials
     ).response
   end
+
+  def self.get_user(user_id)
+    LoopLingo::Request::Get.new(
+      LoopLingo::Uris.get_user_uri(user_id),
+      LoopLingo::User
+    ).response
+  end
+
+  def self.redeem_user_points(user_id, points)
+    LoopLingo::Request::Post.new(
+      LoopLingo::Uris.redeem_user_points_uri(user_id),
+      LoopLingo::Boolean,
+      { :points => points }.merge(LoopLingo.form_post_credentials)
+    ).response
+  end
+
 
 private
 

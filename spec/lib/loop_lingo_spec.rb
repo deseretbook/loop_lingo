@@ -109,4 +109,40 @@ describe LoopLingo do
       LoopLingo.cancel_loop("L123").must == mock_get_response
     end
   end
+
+  describe ".get_user" do
+    before(:each) do
+      LoopLingo.stub(:login).and_return('LOGIN')
+      LoopLingo.stub(:pwd).and_return('PWD')
+    end
+
+    it "must get the user from the api" do
+      mock_get_response = double(:get_response)
+      LoopLingo::Request::Get.stub(:new).with(
+        LoopLingo::Uris.get_user_uri("112358"),
+        LoopLingo::User
+      ).and_return(double(:get_request, :response => mock_get_response))
+
+      LoopLingo.get_user("112358").must == mock_get_response
+    end
+  end
+
+  describe ".redeem_user_points" do
+    before(:each) do
+      LoopLingo.stub(:login).and_return('LOGIN')
+      LoopLingo.stub(:pwd).and_return('PWD')
+    end
+
+    it "must call the redeem points api with the point value and user_id" do
+      mock_get_response = double(:get_response)
+      LoopLingo::Request::Post.stub(:new).with(
+        LoopLingo::Uris.redeem_user_points_uri(112358),
+        LoopLingo::Boolean,
+        { :login => 'LOGIN', :pwd => 'PWD', :points => 1 }
+      ).and_return(double(:get_request, :response => mock_get_response))
+
+      LoopLingo.redeem_user_points("112358", 1).must == mock_get_response
+    end
+  end
+
 end
