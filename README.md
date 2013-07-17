@@ -148,6 +148,37 @@ The second way is to complete the loop with the ID directly:
   LoopLingo.cancel_loop("L54321")
 ```
 
+### Finding a user
+
+You can find an individual user using the user numerical id (from the 'user'
+attribute on a loop):
+
+```
+  LoopLingo.get_user("22082")
+```
+
+### Redeeming User Points
+
+You can redeem a users points in two ways, both return a simple object that
+you can call error?/success? and #errors on. Either by loading the user first
+and calling #redeem_points!:
+
+```
+  user = LoopLingo.get_user("22082")
+  points_to_redeem = 100
+  response = user.redeem_points!(points_to_redeem)
+  response.success? # true
+```
+
+or by calling LoopLingo.redeem_user_points() directly with the user ID:
+
+```
+  user_id = 22082
+  points_to_redeem = 100
+  response = LoopLingo.redeem_user_points(user_id, points_to_redeem)
+  response.success? # true
+```
+
 ### Catching errors
 
 Most methods will return a response object that includes #error?, #errors

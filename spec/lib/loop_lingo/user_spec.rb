@@ -41,13 +41,13 @@ describe LoopLingo::User do
     end
   end
 
-  describe "redeem!" do
+  describe "redeem_points!" do
     it "must call LoopLingo.redeem() with the appropriate arguments" do
       LoopLingo.should_receive(:redeem_user_points).with(
         valid_attributes['id'], 111
       ).and_return(mock_boolean_response)
 
-      valid_user.redeem!(111).must == mock_boolean_response
+      valid_user.redeem_points!(111).must == mock_boolean_response
     end
   end
 end

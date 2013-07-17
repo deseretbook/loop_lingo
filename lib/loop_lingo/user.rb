@@ -20,7 +20,7 @@ class LoopLingo::User
     end
   end
 
-  def redeem!(points)
+  def redeem_points!(points)
     LoopLingo.redeem_user_points(@attributes['id'], points.to_i)
   end
 end
