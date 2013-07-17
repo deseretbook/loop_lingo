@@ -2,11 +2,11 @@ class LoopLingo::Request::Post < LoopLingo::Request
   attr_reader :response
 
   def initialize(uri, response_klass, options = {})
-
     r = HTTParty.post(
       uri,
       {
-        :headers => { 'Content-Type' => 'application/json' },
+        # currently. LL doesn't like this content-type header
+        # :headers => { 'Content-Type' => 'application/json' },
         :body => options
       }
     ).response

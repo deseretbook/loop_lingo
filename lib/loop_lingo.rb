@@ -49,14 +49,29 @@ class LoopLingo
     LoopLingo::Request::Post.new(
       LoopLingo::Uris.get_complete_loop_uri(loop_id),
       LoopLingo::Boolean,
-      { :total => 1.00, :price => 1.00 }
+      { :total => 1.00, :price => 1.00 }.merge(LoopLingo.form_post_credentials)
     ).response
   end
 
   def self.cancel_loop(loop_id)
     LoopLingo::Request::Post.new(
       LoopLingo::Uris.get_cancel_loop_uri(loop_id),
-      LoopLingo::Boolean
+      LoopLingo::Boolean,
+      LoopLingo.form_post_credentials
     ).response
   end
+
+  private
+
+  def self.form_post_credentials
+    {
+      :login => LoopLingo.login,
+      :pwd   => LoopLingo.pwd
+    }
+  end
+
+  def self.url_credentials
+    "login=#{URI.encode(LoopLingo.login)}&pwd=#{URI.encode(LoopLingo.pwd)}"
+  end
+
 end
