@@ -9,10 +9,8 @@ class LoopLingo
       "#{base_uri}/loops/?#{LoopLingo.url_credentials}"
     end
 
-    def self.get_complete_loop_uri(loop_id, options = {})
-      options_str = options.map{|k,v| "#{k}=#{v}" }.join("&")
-      options_str = "&#{options_str}" if options_str.size > 0
-      "#{base_uri}/loop/complete/#{loop_id}/#{options_str}"
+    def self.get_complete_loop_uri(loop_id)
+      "#{base_uri}/loop/complete/#{loop_id}/"
     end
 
     def self.get_cancel_loop_uri(loop_id)
