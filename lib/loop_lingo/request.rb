@@ -1,5 +1,6 @@
 class LoopLingo
   class Request
+    include HTTParty
 
   protected
 

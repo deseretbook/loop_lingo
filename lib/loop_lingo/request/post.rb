@@ -3,12 +3,12 @@ class LoopLingo::Request::Post < LoopLingo::Request
 
   def initialize(uri, response_klass, options = {})
 
-    options = MultiJson.dump(options)
-    puts options.inspect
     r = HTTParty.post(
-     uri,
-      :headers => { 'Content-Type' => 'application/json' },
-      :body => options
+      uri,
+      {
+        :headers => { 'Content-Type' => 'application/json' },
+        :body => options
+      }
     ).response
 
     @response = if http_error?(r)

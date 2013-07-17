@@ -12,16 +12,12 @@ class LoopLingo
     def self.get_complete_loop_uri(loop_id, options = {})
       options_str = options.map{|k,v| "#{k}=#{v}" }.join("&")
       options_str = "&#{options_str}" if options_str.size > 0
-      uri = "#{base_uri}/loop/complete/#{loop_id}/?#{url_credentials}#{options_str}"
-      puts uri
-      uri
+      "#{base_uri}/loop/complete/#{loop_id}/?#{url_credentials}#{options_str}"
     end
 
     # returns: "{\"status\": \"ok\"}"
     def self.get_cancel_loop_uri(loop_id)
-      "#{base_uri}/loop/cancel/#{loop_id}/?#{url_credentials}".tap do |s|
-        puts s
-      end
+      "#{base_uri}/loop/cancel/#{loop_id}/?#{url_credentials}"
     end
 
   private
