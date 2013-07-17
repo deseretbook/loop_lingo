@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/deseretbook/loop_lingo.png?branch=master)](https://travis-ci.org/deseretbook/loop_lingo)
+
 # Loop Lingo
 
 Connect to the Loop Lingo Merchant API
