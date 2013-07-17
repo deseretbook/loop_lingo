@@ -54,8 +54,8 @@ put inside of an initializer.
   LoopLingo.loops
 ```
 
-This returns a LoopLingo::Loops object. To get the array of loops, call
-#loops() on that, which will return an array of LoopLingo::Loop objects.
+This returns a LoopLingo::Loops object. To get the array of loops,
+call #loops() on that, which will return an array of LoopLingo::Loop objects.
 
 The LoopLingo::Loops object includes the Enumerable module, so methods such
 as #first, #last, #each and #map will iterate over the contents of #loops.
@@ -150,9 +150,9 @@ The second way is to complete the loop with the ID directly:
 
 ### Catching errors
 
-Most methods will return a response object that includes #error?, #errors and
-\#success? methods.  For example, if I were attempt to complete a loop that had
-already been completed, here is what I would do to check for the error:
+Most methods will return a response object that includes #error?, #errors
+and #success? methods.  For example, if I were attempt to complete a loop that
+had already been completed, here is what I would do to check for the error:
 
 ```
   response = LoopLingo.complete_loop("L23539")
