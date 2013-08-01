@@ -15,7 +15,7 @@ class LoopLingo
     end
 
     def success?
-      !errror?
+      !error?
     end
 
   private
