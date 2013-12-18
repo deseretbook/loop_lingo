@@ -207,3 +207,7 @@ had already been completed, here is what I would do to check for the error:
 4. Commit your changes (`git commit -am 'Add some feature'`)
 5. Push to the branch (`git push origin my-new-feature`)
 6. Create new Pull Request
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/deseretbook/loop_lingo/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
