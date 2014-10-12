@@ -18,8 +18,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  if RUBY_VERSION == '1.8.7'
-    # versioj 0.11.0 is the last version that works with 1.8.7
+  if RUBY_VERSION.gsub(/[^\d+]/,'').to_i < 193
+    # versioj 0.11.0 is the last version that works with < 1.9.3.
     spec.add_dependency 'httparty', '>=0.10.0', '<=0.11.0'  
   else
     spec.add_dependency 'httparty', '~>0.13.0'
